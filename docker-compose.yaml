@@ -4,11 +4,8 @@ services:
     container_name: baserow
     image: 'baserow/baserow:1.26.1'
     environment:
-      BASEROW_PUBLIC_URL: 'http://5.75.133.35:${PORT_80}'
-      SERVICE_FQDN_BASEROW_${PORT_80}
-    ports:
-      - '${PORT_80}:80'
-      - '${PORT_443}:443'
+      - SERVICE_FQDN_BASEROW_80
+      - 'BASEROW_PUBLIC_URL=${SERVICE_FQDN_BASEROW_80}'
     volumes:
       - 'baserow_data:/baserow/data'
 volumes:
